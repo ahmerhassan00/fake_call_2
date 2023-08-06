@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle_58"
+    tools:context=".welcomescreen">
+
+    <RelativeLayout
+        android:id="@+id/welcome_Relative"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/adView"
+        android:background="@drawable/rectangle_27">
+
+        <TextView
+            android:id="@+id/welcome_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5sp"
+            android:text="Welcome"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/welcome_Relative">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/caller"
+                android:layout_marginTop="8dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/callerimg"/>
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/callerimg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="Fake Call"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/welcome_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/welcome_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:justificationMode="inter_word"
+                android:text="Contrary to popular belief, Lorem Ipsum is not simply rand rst line of Lorem Ipsum, Lorem ipsum dolor sit rst line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32."
+                android:textColor="@color/black"
+                tools:ignore="ExtraText" />
+
+            <RelativeLayout
+                android:id="@+id/continuebtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/my_template"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle_17">
+
+                <TextView
+                    android:id="@+id/loginbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:text="Continue"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/loginbtn"
+                    android:src="@drawable/button" />
+
+
+            </RelativeLayout>
+            <com.google.android.ads.nativetemplates.TemplateView
+                android:id="@+id/my_template"
+                app:gnt_template_type="@layout/gnt_medium_template_view"
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"
+                android:layout_below="@+id/welcome_email"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>

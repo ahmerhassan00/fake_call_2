@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home"
+    android:background="@drawable/rectangle_58">
+
+    <RelativeLayout
+        android:id="@+id/Relative"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/adView"
+        android:background="@drawable/rectangle_27">
+
+        <TextView
+            android:id="@+id/welcome_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5sp"
+            android:text="Fake Call"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/Relative">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="8dp"
+                android:id="@+id/linear"
+                android:layout_marginTop="10dp"
+                >
+                <ImageView
+                    android:layout_width="122dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/group_49"
+                    android:id="@+id/videobtn"
+                    android:layout_marginLeft="8dp"/>
+
+                <ImageView
+                    android:layout_width="122dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/group_50"
+                    android:id="@+id/audiobtn"
+                    android:layout_marginLeft="10dp"/>
+                <ImageView
+                    android:layout_width="122dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/settingsbtn"
+                    android:src="@drawable/group_51"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_below="@+id/linear"
+                android:layout_marginStart="10dp"
+                android:id="@+id/selectcharacter"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rectangle_17">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Select a Character"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+            <com.google.android.ads.nativetemplates.TemplateView
+                android:id="@+id/my_template"
+                app:gnt_template_type="@layout/gnt_medium_template_view"
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                android:layout_below="@+id/selectcharacter"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>

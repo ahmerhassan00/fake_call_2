@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle_58"
+    tools:context=".new_user_privacy">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:id="@+id/heading_privacypolicy"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/new_privacy_continuebtn"
+        android:layout_below="@+id/heading_privacypolicy"
+        android:id="@+id/scroll_view">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy"
+            android:justificationMode="inter_word"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/privacyPolicy"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_alignParentBottom="true"
+        android:text="Continue"
+        android:textStyle="bold"
+        android:id="@+id/new_privacy_continuebtn"
+        android:textSize="16sp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"/>
+</RelativeLayout>

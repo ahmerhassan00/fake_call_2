@@ -11,7 +11,7 @@
         android:id="@+id/settings_Relative"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/adView"
+        android:layout_below="@+id/banner_container"
         android:background="@drawable/rectangle_27">
 
         <ImageView
@@ -51,8 +51,8 @@
 
                 <RelativeLayout
                     android:id="@+id/home"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
                     android:background="@drawable/group_58">
                     <TextView
                         android:layout_width="wrap_content"
@@ -66,8 +66,8 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/rateus"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
                     android:layout_toRightOf="@+id/home"
                     android:layout_marginStart="50dp"
                     android:background="@drawable/group_57" >
@@ -84,8 +84,8 @@
 
                 <RelativeLayout
                     android:id="@+id/share"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
                     android:layout_marginTop="12dp"
                     android:layout_below="@+id/home"
                     android:background="@drawable/group_59" >
@@ -101,71 +101,71 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/exit"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:id="@+id/privacypolicy"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
                     android:layout_marginTop="12dp"
                     android:layout_below="@+id/rateus"
                     android:layout_toRightOf="@+id/share"
                     android:layout_marginStart="50dp"
-                    android:background="@drawable/group_60" >
+                    android:background="@drawable/group_63"
+                    >
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Exit"
+                        android:text="Privacy Policy"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
+                        android:textAlignment="center"
                         android:layout_marginBottom="8dp"
                         android:textColor="@color/black"/>
                 </RelativeLayout>
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/relativelay"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/privacypolicy"
-                android:layout_marginStart="60dp"
-                android:layout_marginEnd="60dp"
-                android:scaleType="fitXY"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/group_61">
+                android:id="@+id/native_ad_container"
+                android:orientation="horizontal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:text="Privacy Policy"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-            </RelativeLayout>
             <com.google.android.ads.nativetemplates.TemplateView
                 android:id="@+id/my_template"
                 app:gnt_template_type="@layout/gnt_medium_template_view"
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:visibility="gone"
-                android:layout_below="@+id/privacypolicy"
+                android:layout_below="@+id/relativelay"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>
     </ScrollView>
 
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">-->
+<!--    </com.google.android.gms.ads.AdView>-->
+    <LinearLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
+        android:orientation="vertical"
+        />
 
 
 </RelativeLayout>

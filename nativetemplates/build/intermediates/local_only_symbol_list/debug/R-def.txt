@@ -29,8 +29,10 @@ dimen gnt_small_margin
 dimen gnt_text_row_weight
 dimen gnt_text_size_large
 dimen gnt_text_size_small
+drawable btn_green
 drawable gnt_outline_shape
 drawable gnt_rounded_corners_shape
+drawable rectangle_17
 id ad_notification_view
 id background
 id body
@@ -45,6 +47,7 @@ id primary
 id rating_bar
 id row_two
 id secondary
+layout gnt_medium_template_customized_view
 layout gnt_medium_template_view
 layout gnt_small_template_view
 styleable TemplateView gnt_template_type

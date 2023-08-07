@@ -21,9 +21,8 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.gms.ads.nativead.NativeAd;
 
 public class home extends AppCompatActivity {
-
     AdView mAdView;
-    ImageView video,audio,settings;
+    RelativeLayout video,audio,settings;
     RelativeLayout charr;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -98,5 +97,12 @@ public class home extends AppCompatActivity {
                 .build();
 
         adLoader.loadAd(new AdRequest.Builder().build());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(home.this, Exit_screen.class);
+        startActivity(i);
     }
 }

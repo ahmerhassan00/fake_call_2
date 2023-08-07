@@ -3,15 +3,30 @@ package com.example.house.fakecall_2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxAdViewAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxAdView;
+import com.applovin.mediation.ads.MaxInterstitialAd;
+import com.applovin.mediation.nativeAds.MaxNativeAd;
+import com.applovin.mediation.nativeAds.MaxNativeAdListener;
+import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
+import com.applovin.mediation.nativeAds.MaxNativeAdView;
+import com.applovin.sdk.AppLovinSdk;
+import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdListener;
@@ -29,22 +44,27 @@ import com.google.android.gms.ads.nativead.NativeAdView;
 
 public class welcomescreen extends AppCompatActivity {
 
+//    private MaxAdView adView;
     AdView mAdView;
-    FrameLayout adcontainer;
     public static final String ad_id = "ca-app-pub-5240576835222291/4545655879";
     private boolean initialLayoutComplete = false;
     RelativeLayout relativeLayout;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomescreen);
         relativeLayout = findViewById(R.id.continuebtn);
+
+
+        mAdView = findViewById(R.id.adView);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(welcomescreen.this, home.class);
                 startActivity(i);
+
             }
         });
 
@@ -53,6 +73,16 @@ public class welcomescreen extends AppCompatActivity {
         adView.setAdSize(AdSize.BANNER);
 
         adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+//        AppLovinSdk.getInstance( this ).setMediationProvider( "max" );
+//        AppLovinSdk.initializeSdk( this, new AppLovinSdk.SdkInitializationListener() {
+//            @Override
+//            public void onSdkInitialized(final AppLovinSdkConfiguration configuration)
+//            {
+//                // AppLovin SDK is initialized, start loading ads
+//                createBannerAd();
+//            }
+//        } );
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -62,7 +92,7 @@ public class welcomescreen extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        //native ad
+//        native ad
         MobileAds.initialize(this);
         AdLoader adLoader = new AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
                 .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
@@ -80,4 +110,6 @@ public class welcomescreen extends AppCompatActivity {
 
         adLoader.loadAd(new AdRequest.Builder().build());
     }
+
+
 }

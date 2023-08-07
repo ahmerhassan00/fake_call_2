@@ -6,7 +6,6 @@
       android:layout_height="350dp"
       android:layout_width="match_parent"
       android:id="@+id/native_ad_view"
-      android:background="@drawable/gnt_outline_shape"
       >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
           android:layout_marginTop="@dimen/gnt_no_margin"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/cta"
           app:layout_constraintBottom_toTopOf="@id/middle"
           />
 
@@ -210,16 +209,19 @@
           android:id="@+id/cta"
           android:layout_width="match_parent"
           android:layout_height="0dp"
-          android:background="#FFA627"
-          android:textColor="@color/gnt_white"
-          android:layout_marginLeft="5dp"
-          android:layout_marginRight="5dp"
+          android:textStyle="bold"
+          android:background="@drawable/rectangle_17"
+          android:textColor="@color/gnt_black"
+          android:layout_marginLeft="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginBottom="5dp"
           android:lines="1"
           android:gravity="center"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/body"
+          app:layout_constraintBottom_toTopOf="@+id/media_view"
+          app:layout_constraintEnd_toEndOf="@+id/media_view"
+          app:layout_constraintStart_toStartOf="@+id/media_view"
+          app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintHeight_min="35dp"
           />
 

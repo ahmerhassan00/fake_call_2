@@ -32,49 +32,105 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/Relative">
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="8dp"
+                android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
-                android:layout_marginRight="8dp"
                 android:id="@+id/linear"
                 android:layout_marginTop="10dp"
                 >
-                <ImageView
-                    android:layout_width="122dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/group_49"
-                    android:id="@+id/videobtn"
-                    android:layout_marginLeft="8dp"/>
+                <RelativeLayout
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/videobtn">
+                    <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/group_49"
+                        android:id="@+id/videobtnimg"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Video Call"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="70dp"
+                        />
+                </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="122dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/group_50"
-                    android:id="@+id/audiobtn"
-                    android:layout_marginLeft="10dp"/>
-                <ImageView
-                    android:layout_width="122dp"
-                    android:layout_height="120dp"
-                    android:id="@+id/settingsbtn"
-                    android:src="@drawable/group_51"
-                    android:layout_marginLeft="10dp"/>
+                <RelativeLayout
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:id="@+id/audiobtn">
+                    <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/group_50"
+                        android:id="@+id/audiobtnimg"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Voice Call"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="70dp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:id="@+id/settingsbtn">
+                    <ImageView
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:scaleType="fitXY"
+                        android:id="@+id/settingsbtnimg"
+                        android:src="@drawable/group_51"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Settings"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="70dp"
+                        />
+                </RelativeLayout>
+
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="69dp"
                 android:layout_below="@+id/linear"
                 android:layout_marginStart="10dp"
                 android:id="@+id/selectcharacter"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rectangle_17">
+                android:background="@drawable/group_46">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,7 +144,7 @@
             </RelativeLayout>
             <com.google.android.ads.nativetemplates.TemplateView
                 android:id="@+id/my_template"
-                app:gnt_template_type="@layout/gnt_medium_template_view"
+                app:gnt_template_type="@layout/gnt_medium_template_customized_view"
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -107,6 +163,8 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         ads:adSize="BANNER"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 </RelativeLayout>

@@ -49,6 +49,7 @@ public class videoactivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mAdView.setVisibility(View.VISIBLE);
 
         //native ad
         MobileAds.initialize(this);

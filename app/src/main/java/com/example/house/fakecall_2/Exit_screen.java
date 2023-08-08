@@ -189,12 +189,8 @@ public class Exit_screen extends AppCompatActivity {
         startActivity(i);
     }
      private void loadNativeAd () {
-            // Instantiate a NativeAd object.
-            // NOTE: the placement ID will eventually identify this as your App, you can ignore it for
-            // now, while you are testing and replace it later when you have signed up.
-            // While you are using this temporary code you will only get test ads and if you release
-            // your code like this to the Google Play your users will not receive ads (you will get a no fill error).
-            nativeAd = new NativeAd(this, "796890155334581_796891605334436");
+
+        nativeAd = new NativeAd(this, "796890155334581_796891605334436");
 
             NativeAdListener nativeAdListener = new NativeAdListener() {
                 @Override

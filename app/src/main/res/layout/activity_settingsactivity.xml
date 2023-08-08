@@ -125,13 +125,12 @@
                 </RelativeLayout>
 
             </RelativeLayout>
-
-            <LinearLayout
+            <com.facebook.ads.NativeAdLayout
+                android:id="@+id/native_ad_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativelay"
-                android:id="@+id/native_ad_container"
-                android:orientation="horizontal" />
+                android:orientation="vertical" />
 
             <com.google.android.ads.nativetemplates.TemplateView
                 android:id="@+id/my_template"

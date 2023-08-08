@@ -66,14 +66,16 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:src="@drawable/group_56"
+                    android:id="@+id/srcBack"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"/>
+
                 <TextView
+                    android:id="@+id/audio_txt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="Whatsapp"
-                    android:id="@+id/txt3"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -83,6 +85,7 @@
                     android:layout_height="38dp"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/group_55"
+                    android:id="@+id/srcNext"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"/>
             </RelativeLayout>
@@ -111,15 +114,26 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:src="@drawable/group_56"
+                    android:id="@+id/timerBack"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"/>
 
                 <TextView
-                    android:id="@+id/txt2"
+                    android:id="@+id/audio_txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="10s"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/audio_txt22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/audio_txt2"
+                    android:text="s"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -129,6 +143,7 @@
                     android:layout_height="38dp"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/group_55"
+                    android:id="@+id/timerNext"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"/>
             </RelativeLayout>
@@ -140,8 +155,9 @@
                 android:layout_below="@+id/relatielast"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="12dp"
-                android:id="@+id/btnbackk"
+                android:id="@+id/startCall"
                 android:layout_marginTop="10dp"/>
+
             <com.google.android.ads.nativetemplates.TemplateView
                 android:id="@+id/my_template"
                 app:gnt_template_type="@layout/gnt_medium_template_view"
@@ -149,7 +165,7 @@
                 android:layout_marginTop="8dp"
                 android:visibility="gone"
                 android:layout_marginBottom="8dp"
-                android:layout_below="@+id/btnbackk"
+                android:layout_below="@+id/startCall"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
     </ScrollView>

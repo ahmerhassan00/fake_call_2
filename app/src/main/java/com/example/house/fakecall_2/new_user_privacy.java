@@ -19,7 +19,7 @@ public class new_user_privacy extends AppCompatActivity {
          MoveNext.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent i = new Intent(new_user_privacy.this,welcomescreen.class);
+                 Intent i = new Intent(new_user_privacy.this,terms_and_conditions.class);
                  startActivity(i);
                  finish();
              }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rectangle_58"
-    tools:context=".privacy_policy">
+    tools:context=".Privacy_policy.privacy_policy">
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,21 +36,47 @@
             android:layout_marginBottom="12dp"
             android:id="@+id/privacyPolicy"
             android:textColor="@color/black"
+            android:paddingBottom="12dp"
             android:textSize="16sp"
             />
     </ScrollView>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_alignParentBottom="true"
-        android:text="Continue"
-        android:visibility="gone"
-        android:textStyle="bold"
+
+
+    <RelativeLayout
         android:id="@+id/privacy_continuebtn"
-        android:textSize="16sp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rectangle_17">
+
+        <TextView
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:text="Agree"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@+id/loginbtn"
+            android:src="@drawable/button" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

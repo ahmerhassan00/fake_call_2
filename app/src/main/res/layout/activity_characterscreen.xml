@@ -73,8 +73,9 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Char 1"
+                        android:text="Wednesday char"
                         android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="8dp"
                         android:layout_below="@+id/card_view1"
@@ -108,11 +109,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Char 2"
+                        android:text="Wednesday"
                         android:textAllCaps="false"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/card_view2"
                         android:layout_marginTop="8dp"
+                        android:textColor="@color/white"
                         android:id="@+id/btn2"/>
                 </RelativeLayout>
             </RelativeLayout>
@@ -156,8 +158,9 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Char 3"
+                        android:text="Adams"
                         android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="8dp"
                         android:layout_below="@+id/card_view3"
@@ -190,8 +193,9 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Char 4"
+                        android:text="Wednesday New"
                         android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/card_view4"
                         android:layout_marginTop="8dp"

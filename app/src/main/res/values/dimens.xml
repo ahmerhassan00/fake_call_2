@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="banner_height">5dp</dimen>
+    <dimen name="fixed_width">130dp</dimen>
+    <dimen name="fixed_height">160dp</dimen>
 </resources>

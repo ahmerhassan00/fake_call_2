@@ -1,11 +1,8 @@
-package com.example.house.fakecall_2;
+package com.example.house.fakecall_2.Audio_calls;
 
-import static com.example.house.fakecall_2.R.raw.im_iron_man;
-import static com.example.house.fakecall_2.R.raw.tonystart_dialog;
-
+import static com.example.house.fakecall_2.R.raw.burno_voice;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +13,13 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Base64;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.house.fakecall_2.R;
+import com.example.house.fakecall_2.characterscreen;
 
 import java.util.Locale;
 
@@ -60,6 +57,7 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         chats = findViewById(R.id.chat);
         profilePic = findViewById(R.id.profile_image);
         caller_name = findViewById(R.id.callername);
+
         mediaPlayer = new MediaPlayer();
         mMediaPlayer = new MediaPlayer();
         mMediaPlayer = MediaPlayer.create(this, R.raw.ringtune);
@@ -119,30 +117,36 @@ public class Whatsapp_audiocall extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (name.equals("Char 1")){
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, tonystart_dialog);
+                if (name.equals("Wednesday char")){
+
+                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
-                } else if (name.equals("Char 2")) {
+                } else if (name.equals("Wednesday")) {
                     mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, im_iron_man);
+                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
 
                 }
-                else if (name.equals("Char 3")){
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, tonystart_dialog);
+                else if (name.equals("Adams")){
+
+                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
                 }
-                else if (name.equals("Char 4")){
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, im_iron_man);
+                else if (name.equals("Wednesday New")){
+
+                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, R.raw.burno_voice);
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+                }
+                else {
+                    mediaPlayer = MediaPlayer.create(Whatsapp_audiocall.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
@@ -273,6 +277,6 @@ public class Whatsapp_audiocall extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         mMediaPlayer.stop();
-        mediaPlayer.start();
+        mediaPlayer.stop();
     }
 }

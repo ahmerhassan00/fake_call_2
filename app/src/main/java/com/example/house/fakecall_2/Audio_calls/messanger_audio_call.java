@@ -1,7 +1,5 @@
-package com.example.house.fakecall_2;
+package com.example.house.fakecall_2.Audio_calls;
 
-import static com.example.house.fakecall_2.R.raw.im_iron_man;
-import static com.example.house.fakecall_2.R.raw.tonystart_dialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +16,8 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.house.fakecall_2.R;
 
 import java.util.Locale;
 
@@ -72,30 +72,33 @@ public class messanger_audio_call extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (name.equals("Char 1")){
+                startTimer();
+                if (name.equals("Wednesday char")){
                     mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, tonystart_dialog);
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaPlayer.setLooping(true);
-                    mediaPlayer.start();
-                } else if (name.equals("Char 2")) {
-                    mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, im_iron_man);
+                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
 
                 }
-                else if (name.equals("Char 3")){
+                else if (name.equals("Wednesday")) {
                     mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, tonystart_dialog);
+                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, R.raw.burno_voice);
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+
+                }
+                else if (name.equals("Adams")){
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
                 }
-                else if (name.equals("Char 4")){
+                else if (name.equals("Wednesday New")){
                     mediaPlayer = new MediaPlayer();
-                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, im_iron_man);
+                    mediaPlayer = MediaPlayer.create(messanger_audio_call.this, R.raw.burno_voice);
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
@@ -106,13 +109,6 @@ public class messanger_audio_call extends AppCompatActivity {
                 mMediaPlayer.stop();
                 messanger_txt.setVisibility(View.GONE);
                 counterTextView.setVisibility(View.VISIBLE);
-//                mediaPlayer = new MediaPlayer();
-//                mediaPlayer = MediaPlayer.create(messanger_audio_call.this, tonystart_dialog);
-//                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//                mediaPlayer.setLooping(true);
-//                mediaPlayer.start();
-                startTimer();
-
 
             }
         });
@@ -174,4 +170,5 @@ public class messanger_audio_call extends AppCompatActivity {
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         counterTextView.setText(timeFormatted);
     }
+
 }

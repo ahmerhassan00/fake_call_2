@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Looper;
 import android.os.Handler;
+
+import com.example.house.fakecall_2.Privacy_policy.new_user_privacy;
 
 
 public class MainActivity extends AppCompatActivity {

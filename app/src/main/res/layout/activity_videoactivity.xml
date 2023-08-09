@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".videoactivity"
+    tools:context=".Video_calls.videoactivity"
     android:background="@drawable/rectangle_58">
 
     <RelativeLayout
@@ -64,15 +64,17 @@
                 <ImageView
                     android:layout_width="38dp"
                     android:layout_height="38dp"
+                    android:id="@+id/video_medium_back"
                     android:src="@drawable/group_56"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"/>
+
                 <TextView
+                    android:id="@+id/video_txt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="Whatsapp"
-                    android:id="@+id/txt3"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -80,6 +82,7 @@
                 <ImageView
                     android:layout_width="38dp"
                     android:layout_height="38dp"
+                    android:id="@+id/video_medium_next"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/group_55"
                     android:layout_centerVertical="true"
@@ -110,15 +113,27 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:src="@drawable/group_56"
+                    android:id="@+id/video_time_back"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"/>
 
                 <TextView
-                    android:id="@+id/txt2"
+                    android:id="@+id/video_txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="10s"
+                    android:text="Now"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/video_txt22"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/video_txt2"
+                    android:text="s"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -127,6 +142,7 @@
                     android:layout_width="38dp"
                     android:layout_height="38dp"
                     android:layout_alignParentEnd="true"
+                    android:id="@+id/video_time_next"
                     android:src="@drawable/group_55"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"/>
@@ -136,7 +152,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:src="@drawable/vector"
-                android:id="@+id/backbtntwo"
+                android:id="@+id/start_video_call"
                 android:layout_below="@+id/relatielast"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="12dp"
@@ -147,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:visibility="gone"
-                android:layout_below="@+id/backbtntwo"
+                android:layout_below="@+id/start_video_call"
                 android:layout_height="wrap_content"/>
 
         </RelativeLayout>
@@ -163,7 +179,6 @@
         android:layout_marginBottom="2dp"
         android:layout_marginTop="2dp"
         ads:adSize="BANNER"
-        android:visibility="gone"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
 

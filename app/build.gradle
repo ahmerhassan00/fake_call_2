@@ -43,5 +43,6 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.0'
     implementation 'com.facebook.android:audience-network-sdk:6.15.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation "androidx.camera:camera-camera2:1.1.0"
 
 }

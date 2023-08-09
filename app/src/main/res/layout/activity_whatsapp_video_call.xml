@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle_58"
+    tools:context=".Video_calls.whatsapp_video_call">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/video_relative">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/topItems_vieo_whatsapp"
+            android:background="#00000000">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_video_whatsapp"
+                android:layout_width="98dp"
+                android:layout_height="98dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/char_3"
+                app:civ_border_color="#00000000"
+                app:civ_border_width="1dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_below="@+id/profile_image_video_whatsapp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:id="@+id/callername_video_whatsapp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Whatsapp video call"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_below="@+id/callername_video_whatsapp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:id="@+id/wA_txt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:layout_below="@+id/callername_video_whatsapp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:id="@+id/wA_timer"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#007376"
+        android:id="@+id/bottom_video_items">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:id="@+id/contents">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cancel_video_whatsapp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/cancel_call"
+                app:civ_border_color="#00000000"
+                app:civ_border_width="1dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/answer_video_whatsapp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/group_69"
+                app:civ_border_color="#00000000"
+                app:civ_border_width="1dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/chat_video"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/baseline_speaker_notes_24"
+                app:civ_border_color="#00000000"
+                app:civ_border_width="1dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="18dp"
+        android:layout_alignParentEnd="true"
+        android:layout_height="160dp"
+        android:id="@+id/videoOther">
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/surfaceTwo"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cancel_video_whatsapp_two"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cancel_call"
+        app:civ_border_color="#00000000"
+        app:civ_border_width="1dp" />
+</RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rectangle_58"
-    tools:context=".messanger_audio_call">
+    tools:context=".Audio_calls.messanger_audio_call">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,50 +59,55 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="5dp"
-        android:layout_centerHorizontal="true"
         android:layout_above="@+id/bottomItems"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="5dp">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chat_messanger"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/messangericon"
             android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginEnd="20dp"
+            android:src="@drawable/messangericon"
             app:civ_border_color="#00000000"
             app:civ_border_width="1dp" />
+
         <TextView
+            android:id="@+id/message_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MESSAGE"
             android:layout_below="@+id/chat_messanger"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/black"
             android:layout_marginEnd="10dp"
-            android:id="@+id/message_txt"/>
+            android:text="MESSAGE"
+            android:textColor="@color/black" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/remind_messanger"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/bell"
             android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="20dp"
+            android:src="@drawable/bell"
             app:civ_border_color="#00000000"
             app:civ_border_width="1dp" />
+
         <TextView
+            android:id="@+id/remind_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remind"
             android:layout_below="@+id/remind_messanger"
             android:layout_alignParentStart="true"
-            android:textColor="@color/black"
             android:layout_marginStart="15dp"
-            android:id="@+id/remind_txt"/>
+            android:text="Remind"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <RelativeLayout

@@ -1,20 +1,24 @@
-package com.example.house.fakecall_2;
+package com.example.house.fakecall_2.Privacy_policy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
+
+import com.example.house.fakecall_2.R;
+import com.example.house.fakecall_2.welcomescreen;
 
 public class terms_and_conditions extends AppCompatActivity {
 
     CheckBox ch1,ch2;
-    Button btn_continue;
+    RelativeLayout btn_continue;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -52,9 +56,16 @@ public class terms_and_conditions extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("isFirstTime", false);
                 editor.apply();
-                Intent i = new Intent(terms_and_conditions.this, welcomescreen.class);
-                startActivity(i);
-                finish();
+                //camera permission
+                if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    // Request camera permission if not granted
+                    requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 1);
+                }
+                else {
+                    Intent i = new Intent(terms_and_conditions.this, welcomescreen.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
     }

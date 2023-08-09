@@ -1,4 +1,4 @@
-package com.example.house.fakecall_2;
+package com.example.house.fakecall_2.Privacy_policy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.example.house.fakecall_2.R;
 
 public class new_user_privacy extends AppCompatActivity {
 
-    Button MoveNext;
+    RelativeLayout MoveNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

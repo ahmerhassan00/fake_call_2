@@ -128,6 +128,10 @@
             <com.facebook.ads.NativeAdLayout
                 android:id="@+id/native_ad_container"
                 android:layout_width="match_parent"
+                android:background="@drawable/btns_exit"
+                android:layout_margin="1dp"
+                android:padding="3dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relativelay"
                 android:orientation="vertical" />

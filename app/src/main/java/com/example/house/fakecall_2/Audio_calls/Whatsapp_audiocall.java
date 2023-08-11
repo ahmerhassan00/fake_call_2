@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.house.fakecall_2.R;
 import com.example.house.fakecall_2.characterscreen;
+import com.example.house.fakecall_2.live_chat.chat_activity;
 
 import java.util.Locale;
 
@@ -81,6 +82,15 @@ public class Whatsapp_audiocall extends AppCompatActivity {
             caller_name.setText("User Name");
         }
 
+        chats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Whatsapp_audiocall.this, chat_activity.class);
+                mMediaPlayer.stop();
+                startActivity(i);
+                finish();
+            }
+        });
 
         micON.setOnClickListener(new View.OnClickListener() {
             @Override

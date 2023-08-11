@@ -4,8 +4,9 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
+
+        android:name=".openApp_Ad.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FakeCall_2"
         tools:targetApi="31">
+        <activity
+            android:name=".live_chat.chat_activity"
+            android:exported="false" />
         <activity
             android:name=".Video_calls.messanger_video_call"
             android:exported="false" />
@@ -68,7 +72,12 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5240576835222291~9247318211" />
+            android:value="ca-app-pub-3183702646427948~7579099040" />
+
+        <meta-data android:name="applovin.sdk.key"
+            android:value="MLIxnLHqb1RXkK6Urqzgr56WQkoashMTDzT5lx5iwmkpf4_qaKmO840ozB5gHGoybxFrMCGm0nNL71oc9PAJIu"/>
+
+
     </application>
 
 </manifest>

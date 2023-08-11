@@ -2,6 +2,7 @@ package com.example.house.fakecall_2;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,10 +11,12 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +34,14 @@ import com.facebook.ads.NativeAdLayout;
 import com.facebook.ads.NativeAdListener;
 import com.facebook.ads.NativeAdView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exit_screen extends AppCompatActivity {
 
-    Button yes;
+    RelativeLayout yes;
     TextView no, shareapp, rateus;
     NativeAd fbnativeAd;
     AdView fbadView;
@@ -97,9 +102,9 @@ public class Exit_screen extends AppCompatActivity {
             }
         });
         //facebook banner ads
-        String placementId = "796890155334581_796891748667755";
+
         //facebook banner
-        fbadView = new AdView(this, placementId, AdSize.BANNER_HEIGHT_50);
+        fbadView = new AdView(this, getString(R.string.facebook_banner_test), AdSize.BANNER_HEIGHT_50);
 
         //Ad Container
         LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
@@ -111,9 +116,10 @@ public class Exit_screen extends AppCompatActivity {
             @Override
             public void onError(Ad ad, AdError adError) {
                 // Ad error callback
-                Toast.makeText(Exit_screen.this, "Error: " + adError.getErrorMessage(),
+                Toast.makeText(Exit_screen.this, "Error_banner: " + adError.getErrorMessage(),
                                 Toast.LENGTH_LONG)
                         .show();
+                Log.d("FB_Banner","Error: "+adError);
             }
 
             @Override
@@ -190,7 +196,7 @@ public class Exit_screen extends AppCompatActivity {
     }
      private void loadNativeAd () {
 
-        nativeAd = new NativeAd(this, "796890155334581_796891605334436");
+        nativeAd = new NativeAd(this, getString(R.string.facebook_native_test));
 
             NativeAdListener nativeAdListener = new NativeAdListener() {
                 @Override
@@ -201,6 +207,8 @@ public class Exit_screen extends AppCompatActivity {
                 @Override
                 public void onError(Ad ad, AdError adError) {
 
+                    Toast.makeText(Exit_screen.this, "native_error: "+adError, Toast.LENGTH_SHORT).show();
+                    Log.d("FB_Native","Error Code: "+adError.getErrorCode()+" Message: "+ adError.getErrorMessage());
                 }
 
                 @Override
@@ -255,7 +263,7 @@ public class Exit_screen extends AppCompatActivity {
             TextView nativeAdSocialContext = adView.findViewById(R.id.native_ad_social_context);
             TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
             TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
-            Button nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+            TextView nativeAdCallToAction = adView.findViewById(R.id.txt_fb_btn);
 
             // Set the Text.
             nativeAdTitle.setText(nativeAd.getAdvertiserName());

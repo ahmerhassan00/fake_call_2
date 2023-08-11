@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Privacy Policy"
+        android:text="Private Policy for AppSync Studio"
         android:textSize="22sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -21,24 +21,293 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_above="@+id/privacy_continuebtn"
         android:layout_below="@+id/heading_privacypolicy"
         android:id="@+id/scroll_view">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/privacy_policy"
-            android:justificationMode="inter_word"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="12dp"
-            android:id="@+id/privacyPolicy"
-            android:textColor="@color/black"
-            android:paddingBottom="12dp"
-            android:textSize="16sp"
-            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information Collection and Use"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading1"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_1"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading1"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information Collection and Use"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_privacypolicy1"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log Data"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt1"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_2"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_2"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt2"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cookies"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt2"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_4"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_3"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_4"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt3"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Providers"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt3"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_5"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_4"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_5"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt4"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Security"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt4"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_6"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_5"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_6"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt5"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Links to Other Sites"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt5"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_7"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_6"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_7"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt6"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MetaUsage"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt6"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_8"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_7"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_8"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt7"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Children’s Privacy"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt7"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_9"
+                android:layout_margin="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_8"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_9"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt8"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Changes to This Privacy Policy"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt8"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_10"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_9"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_10"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt9"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Us"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/privacyPolicy_txt9"
+                android:textStyle="bold"
+                android:id="@+id/Sub_heading_11"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_policy_10"
+                android:justificationMode="inter_word"
+                android:layout_below="@+id/Sub_heading_11"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/privacyPolicy_txt10"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
     </ScrollView>
 
 

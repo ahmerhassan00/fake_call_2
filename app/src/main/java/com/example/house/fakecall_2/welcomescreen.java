@@ -46,7 +46,7 @@ public class welcomescreen extends AppCompatActivity {
 
 //    private MaxAdView adView;
     AdView mAdView;
-    public static final String ad_id = "ca-app-pub-5240576835222291/4545655879";
+//    public static final String ad_id = "ca-app-pub-5240576835222291/4545655879";
     private boolean initialLayoutComplete = false;
     RelativeLayout relativeLayout;
 
@@ -72,7 +72,7 @@ public class welcomescreen extends AppCompatActivity {
 
         adView.setAdSize(AdSize.BANNER);
 
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        adView.setAdUnitId(getString(R.string.admob_banner_test));
 
 //        AppLovinSdk.getInstance( this ).setMediationProvider( "max" );
 //        AppLovinSdk.initializeSdk( this, new AppLovinSdk.SdkInitializationListener() {
@@ -94,7 +94,7 @@ public class welcomescreen extends AppCompatActivity {
 
 //        native ad
         MobileAds.initialize(this);
-        AdLoader adLoader = new AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
+        AdLoader adLoader = new AdLoader.Builder(this, getString(R.string.admob_Native_test))
                 .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                     @Override
                     public void onNativeAdLoaded(NativeAd nativeAd) {

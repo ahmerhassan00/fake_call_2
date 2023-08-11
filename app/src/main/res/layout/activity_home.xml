@@ -142,15 +142,22 @@
                     android:textStyle="bold" />
 
             </RelativeLayout>
-            <com.google.android.ads.nativetemplates.TemplateView
-                android:id="@+id/my_template"
-                app:gnt_template_type="@layout/gnt_medium_template_customized_view"
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                android:layout_below="@+id/selectcharacter"
-                android:layout_height="wrap_content" />
+
+
+                <com.google.android.ads.nativetemplates.TemplateView
+                    android:id="@+id/my_template"
+                    app:gnt_template_type="@layout/gnt_medium_template_customized_view"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/selectcharacter"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    android:paddingBottom="8dp"
+                    android:background="@drawable/bordergreen"
+                    android:layout_height="wrap_content" />
+
 
         </RelativeLayout>
     </ScrollView>

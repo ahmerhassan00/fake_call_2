@@ -16,17 +16,36 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp">
 
-        <Button
+
+        <RelativeLayout
             android:id="@+id/native_ad_call_to_action"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_gravity="center_vertical"
-            android:background="@color/purple_700"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
-            android:visibility="gone" />
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btns_exit">
+
+            <TextView
+                android:id="@+id/txt_fb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Agree"
+                android:textColor="@color/purple_200"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
         <com.facebook.ads.MediaView
             android:id="@+id/native_ad_icon"

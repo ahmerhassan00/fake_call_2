@@ -64,15 +64,35 @@
                 android:layout_below="@+id/exit_txt"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/rel_exit">
-                
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Exit"
-                    android:textSize="17dp"
+
+                <RelativeLayout
                     android:id="@+id/btn_yes"
-                    android:layout_marginStart="12dp"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/btns_exit">
+
+                    <TextView
+                        android:id="@+id/loginbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Exit"
+                        android:textColor="@color/purple_200"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
             </RelativeLayout>
 
             <com.facebook.ads.NativeAdLayout

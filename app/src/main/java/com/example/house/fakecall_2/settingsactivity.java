@@ -7,6 +7,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.example.house.fakecall_2.Privacy_policy.privacy_policy;
 import com.facebook.ads.*;
 import com.facebook.ads.AdError;
@@ -27,10 +33,9 @@ import com.facebook.ads.NativeAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class settingsactivity extends AppCompatActivity {
-
-
+public class settingsactivity extends AppCompatActivity implements MaxAdListener {
     ImageView back;
     NativeAd fbnativeAd;
     AdView fbadView;
@@ -38,6 +43,11 @@ public class settingsactivity extends AppCompatActivity {
     private NativeAdLayout nativeAdLayout;
     private LinearLayout adView;
     private NativeAd nativeAd;
+    String placementId, nativeID, applovin_intrestitial;
+    private InterstitialAd interstitialAd;
+    private MaxInterstitialAd maxinterstitialAd;
+    private int retryAttempt;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +59,7 @@ public class settingsactivity extends AppCompatActivity {
         rate = findViewById(R.id.rateus);
         privacy = findViewById(R.id.privacypolicy);
 
-        AudienceNetworkAds.initialize(this);
-
+        createInterstitialAd();
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,10 +99,26 @@ public class settingsactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                if (maxinterstitialAd.isReady()){
+                    maxinterstitialAd.showAd();
+                }
+                else {
+                    Toast.makeText(settingsactivity.this, "1", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        String placementId = "796890155334581_796891748667755";
+
+
+        if (BuildConfig.DEBUG){
+            placementId = getString(R.string.facebook_banner_test);
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+
+        }
+        else {
+            placementId = getString(R.string.facebook_banner_live);
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+        }
         //facebook banner
         fbadView = new AdView(this, placementId, AdSize.BANNER_HEIGHT_50);
 
@@ -107,9 +132,10 @@ public class settingsactivity extends AppCompatActivity {
             @Override
             public void onError(Ad ad, AdError adError) {
                 // Ad error callback
-                Toast.makeText(settingsactivity.this, "Error: " + adError.getErrorMessage(),
-                                Toast.LENGTH_LONG)
-                        .show();
+//                Toast.makeText(settingsactivity.this, "Error: " + adError.getErrorMessage(),
+//                                Toast.LENGTH_LONG)
+//                        .show();
+                Log.d("fb_banner","Error: "+ adError.getErrorMessage());
             }
 
             @Override
@@ -206,12 +232,15 @@ public class settingsactivity extends AppCompatActivity {
     }
 
     private void loadNativeAd () {
-        // Instantiate a NativeAd object.
-        // NOTE: the placement ID will eventually identify this as your App, you can ignore it for
-        // now, while you are testing and replace it later when you have signed up.
-        // While you are using this temporary code you will only get test ads and if you release
-        // your code like this to the Google Play your users will not receive ads (you will get a no fill error).
-        nativeAd = new NativeAd(this, "796890155334581_796891605334436");
+
+
+        if (BuildConfig.DEBUG){
+            nativeID = getString(R.string.facebook_native_test);
+        }
+        else {
+            nativeID = getString(R.string.facebook_native_live);
+        }
+        nativeAd = new NativeAd(this,nativeID);
 
         NativeAdListener nativeAdListener = new NativeAdListener() {
             @Override
@@ -221,6 +250,7 @@ public class settingsactivity extends AppCompatActivity {
 
             @Override
             public void onError(Ad ad, AdError adError) {
+                Log.d("fb_native","Error: "+adError.getErrorMessage());
 
             }
 
@@ -258,6 +288,7 @@ public class settingsactivity extends AppCompatActivity {
 
         // Add the Ad view into the ad container.
         nativeAdLayout = findViewById(R.id.native_ad_container);
+        nativeAdLayout.setVisibility(View.VISIBLE);
         LayoutInflater inflater = LayoutInflater.from(settingsactivity.this);
         // Inflate the Ad view.  The layout referenced should be the one you created in the last step.
         adView = (LinearLayout) inflater.inflate(R.layout.facebook_native_ads, nativeAdLayout, false);
@@ -276,7 +307,7 @@ public class settingsactivity extends AppCompatActivity {
         TextView nativeAdSocialContext = adView.findViewById(R.id.native_ad_social_context);
         TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
         TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
-        Button nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+        TextView nativeAdCallToAction = adView.findViewById(R.id.txt_fb_btn);
 
         // Set the Text.
         nativeAdTitle.setText(nativeAd.getAdvertiserName());
@@ -297,6 +328,72 @@ public class settingsactivity extends AppCompatActivity {
 
     }
 
+    void createInterstitialAd()
+    {
+
+        if (BuildConfig.DEBUG){
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+
+        }
+        else {
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+        }
+        maxinterstitialAd = new MaxInterstitialAd( applovin_intrestitial, this );
+        maxinterstitialAd.setListener( this );
+
+        // Load the first ad
+        maxinterstitialAd.loadAd();
+        Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show();
+    }
+
+    // MAX Ad Listener
+    @Override
+    public void onAdLoaded(final MaxAd maxAd)
+    {
+        // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
+
+        // Reset retry attempt
+        retryAttempt = 0;
+    }
+
+    @Override
+    public void onAdLoadFailed(final String adUnitId, final MaxError error)
+    {
+        // Interstitial ad failed to load
+        // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+
+        retryAttempt++;
+        long delayMillis = TimeUnit.SECONDS.toMillis( (long) Math.pow( 2, Math.min( 6, retryAttempt ) ) );
+
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                maxinterstitialAd.loadAd();
+            }
+        }, delayMillis );
+    }
+
+    @Override
+    public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error)
+    {
+        // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
+        maxinterstitialAd.loadAd();
+    }
+
+    @Override
+    public void onAdDisplayed(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdClicked(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdHidden(final MaxAd maxAd)
+    {
+        // Interstitial ad is hidden. Pre-load the next ad
+        maxinterstitialAd.loadAd();
+    }
 
 
 

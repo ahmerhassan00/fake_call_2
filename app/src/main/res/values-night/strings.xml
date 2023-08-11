@@ -1,11 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FakeCall_2</string>
-    <string name="privacy_policy">This private policy is used to inform our best and loving visitor regarding our policy that we are applying on apps according to collection, use, info and other disclosure of personal information if someone decides to use our apps and services.
-        If you choose or select our services that we are providing in apps, then you agree to the collection and use of info in relation to this private policy. This personal info is collected to provide and improve our services. We will not use or share any information with anyone at any cost, that is described in this policy.
-
-The terms used in this privacy policy have the same meaning in our Terms and Conditions, which is a privacy policy.
-</string>
-
     <string name="admob_openApp_live">ca-app-pub-3183702646427948/1013690691</string>
     <string name="admob_openApp_test">ca-app-pub-3940256099942544/3419835294</string>
     <string name="admob_banner_live">ca-app-pub-3183702646427948/4952935707</string>
@@ -22,15 +16,12 @@ The terms used in this privacy policy have the same meaning in our Terms and Con
     <string name="facebook_Interstitial_live">297195986334925_297196233001567</string>
     <string name="facebook_Interstitial_test">IMG_16_9_APP_INSTALL#YOUR_PLACEMENT_ID</string>
 
-    <string name="app_lovin_Banner">d88dd6e014ffdbda</string>
-    <string name="app_lovin_native">dfeab8a67b6c91ef</string>
-    <string name="app_lovin_interstitial">96ad6a3e21c7da53</string>
-<!--    need to be change-->
+    <string name="app_lovin_Banner">d6167dfb287d715e</string>
+    <string name="app_lovin_medium_native">395c77041983d6f3</string>
     <string name="applovin_openApp">e260d02e71956c00</string>
-    <string name="privacy_policy_1">"For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to simple AppSync Studio. These apps do use third party services that may collect information used to identify you. Link to privacy policy of third party service providers used by the app \nGoogle Play Services \nAdMob \nFacebook "</string>
+    <string name="privacy_policy_1">"For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to simple AppSync Studio. These apps do use third party services that may collect information used to identify you. Link to privacy policy of third party service providers used by the app \nGoogle Play Services \nAdMob \nFacebook"</string>
     <string name="privacy_policy_2">"I want to inform you that whenever you use our Service, in case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics. "</string>
-    <string name="privacy_policy_3">Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device internal memory. This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device.
-</string>
+    <string name="privacy_policy_3">Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device\'s internal memory.</string>
     <string name="privacy_policy_4">"I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose. "</string>
     <string name="privacy_policy_5">"I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security. "</string>
     <string name="privacy_policy_6">"This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. "</string>
@@ -38,10 +29,4 @@ The terms used in this privacy policy have the same meaning in our Terms and Con
     <string name="privacy_policy_8">"These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to take necessary actions. "</string>
     <string name="privacy_policy_9">"We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page. "</string>
     <string name="privacy_policy_10">If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact us at AppSyncStudio237@gmail.com</string>
-
-
-    <!--    FACEBOOK-->
-<!--    APP ID:-->
-<!--    297195986334925-->
-
 </resources>

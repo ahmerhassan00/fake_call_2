@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.house.fakecall_2'
+    namespace 'com.appsync.Video.Audio.Fake.call.prank.fun.voice.change'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.house.fakecall_2"
+        applicationId "com.appsync.Video.Audio.Fake.call.prank.fun.voice.change"
         minSdk 24
         targetSdk 33
         versionCode 1

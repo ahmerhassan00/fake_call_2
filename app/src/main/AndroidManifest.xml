@@ -6,7 +6,7 @@
 
     <application
 
-        android:name=".openApp_Ad.MyApplication"
+        android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.openApp_Ad.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,52 +16,52 @@
         android:theme="@style/Theme.FakeCall_2"
         tools:targetApi="31">
         <activity
-            android:name=".live_chat.chat_activity"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.live_chat.chat_activity"
             android:exported="false" />
         <activity
-            android:name=".Video_calls.messanger_video_call"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Video_calls.messanger_video_call"
             android:exported="false" />
         <activity
-            android:name=".Video_calls.whatsapp_video_call"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Video_calls.whatsapp_video_call"
             android:exported="false" />
         <activity
-            android:name=".Audio_calls.messanger_audio_call"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.messanger_audio_call"
             android:exported="false" />
         <activity
-            android:name=".Audio_calls.Whatsapp_audiocall"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.Whatsapp_audiocall"
             android:exported="false" />
         <activity
-            android:name=".Privacy_policy.terms_and_conditions"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Privacy_policy.terms_and_conditions"
             android:exported="false" />
         <activity
-            android:name=".Privacy_policy.new_user_privacy"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Privacy_policy.new_user_privacy"
             android:exported="false" />
         <activity
-            android:name=".Privacy_policy.privacy_policy"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Privacy_policy.privacy_policy"
             android:exported="false" />
         <activity
-            android:name=".Exit_screen"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Exit_screen"
             android:exported="false" />
         <activity
-            android:name=".characterscreen"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.characterscreen"
             android:exported="false" />
         <activity
-            android:name=".settingsactivity"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.settingsactivity"
             android:exported="false" />
         <activity
-            android:name=".Audio_calls.audioactivity"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.audioactivity"
             android:exported="false" />
         <activity
-            android:name=".Video_calls.videoactivity"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Video_calls.videoactivity"
             android:exported="false" />
         <activity
-            android:name=".welcomescreen"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.welcomescreen"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.home"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

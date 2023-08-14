@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Video_calls.videoactivity"
+    tools:context="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Video_calls.videoactivity"
     android:background="@drawable/rectangle_58">
 
     <RelativeLayout

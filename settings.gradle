@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "FakeCall_2"
+rootProject.name = "Video Audio Fake call prank"
 include ':app'
 include ':nativetemplates'

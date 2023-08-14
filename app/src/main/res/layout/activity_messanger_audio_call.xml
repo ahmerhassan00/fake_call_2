@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rectangle_58"
-    tools:context=".Audio_calls.messanger_audio_call">
+    tools:context="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.messanger_audio_call">
 
     <RelativeLayout
         android:layout_width="match_parent"

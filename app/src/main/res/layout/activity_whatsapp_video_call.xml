@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rectangle_58"
-    tools:context=".Video_calls.whatsapp_video_call">
+    tools:context="com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Video_calls.whatsapp_video_call">
 
 
     <RelativeLayout

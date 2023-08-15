@@ -3,14 +3,17 @@ package com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Privacy_policy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
@@ -27,8 +30,7 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
 
     CheckBox ch1,ch2;
     RelativeLayout btn_continue;
-    private MaxInterstitialAd interstitialAd;
-    private MaxAdView adView;
+    ProgressDialog mProgressDialog;
     ////
     private MaxInterstitialAd interstitialAd_new;
     private Handler handlerRetryAd;
@@ -45,11 +47,9 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
         btn_continue = findViewById(R.id.terms_continue);
         SharedPreferences sharedPreferences = getSharedPreferences("check_entry", MODE_PRIVATE);
         boolean isFirstTime = sharedPreferences.getBoolean("isFirstTime", true);
-        interstitialAd = new MaxInterstitialAd("9d02dc5c6e58e5e1", this);
-        interstitialAd.setListener(this);
-        interstitialAd.loadAd();
-
-
+        interstitialAd_new = new MaxInterstitialAd("9d02dc5c6e58e5e1", this);
+        interstitialAd_new.setListener(this);
+        interstitialAd_new.loadAd();
 
         //camera permission
         if (checkSelfPermission(android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -70,6 +70,19 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
             }
         });
 
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setTitle("Please Wait");
+        mProgressDialog.setMessage("Its loading...");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.dismiss();
+            }
+        },3000);
         if (ch1.isChecked() && ch2.isChecked()){
             btn_continue.setVisibility(View.VISIBLE);
         }
@@ -85,13 +98,6 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
 //        adView = findViewById(R.id.adviewaplovin);
 //        adView.loadAd();
 
-
-        interstitialAd = new MaxInterstitialAd("43c8f51f61d1c94f", this);
-        interstitialAd.setListener(this);
-
-        // Load the first ad
-        interstitialAd.loadAd();
-
         initializeAdNetwork(); // initialize ads only once during the app startup
         createInterstitialAd();
 
@@ -104,29 +110,13 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
             @Override
             public void onClick(View view) {
 
-                    showInterstitialAd();
-//
-//                if (interstitialAd.isReady()) {
-//
-//                    interstitialAd.showAd();
-
-//                }
-//                else {
-                    ///add handler
-
-//                }
+                showInterstitialAd();
 
                 // Set the flag to false to indicate the app has been opened once
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("isFirstTime", false);
                 editor.apply();
 
-
-//                else {
-//                    Intent i = new Intent(terms_and_conditions.this, welcomescreen.class);
-//                    startActivity(i);
-//                    finish();
-//                }
             }
         });
     }
@@ -158,14 +148,12 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
     // Call this method whenever you want to load a new ad
     private void loadInterstitialAd() {
         interstitialAd_new.loadAd();
-
     }
 
     // Call this method to show the ad
     private void showInterstitialAd() {
-        if (interstitialAd_new.isReady()) {
-            interstitialAd_new.showAd();
-        }
+
+        interstitialAd_new.showAd();
         Intent i = new Intent(terms_and_conditions.this, welcomescreen.class);
         startActivity(i);
         finish();
@@ -176,6 +164,7 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
         handlerRetryAd.removeCallbacksAndMessages(null);
         interstitialAd_new.destroy();
         super.onDestroy();
+
     }
 
     @Override
@@ -193,6 +182,7 @@ public class terms_and_conditions extends AppCompatActivity implements MaxAdList
     @Override
     public void onAdHidden(MaxAd ad) {
         // User closed the ad. Pre-load the next ad
+
         loadInterstitialAd();
     }
 

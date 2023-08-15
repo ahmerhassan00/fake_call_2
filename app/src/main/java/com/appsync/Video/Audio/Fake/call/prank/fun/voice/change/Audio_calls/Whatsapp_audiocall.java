@@ -12,13 +12,20 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.BuildConfig;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.R;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.live_chat.chat_activity;
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.AudienceNetworkAds;
+import com.facebook.ads.InterstitialAd;
+import com.facebook.ads.InterstitialAdListener;
 
 import java.util.Locale;
 
@@ -36,6 +43,8 @@ public class Whatsapp_audiocall extends AppCompatActivity {
     private int timerCount = 0;
     private boolean isTimerRunning = false;
     MediaPlayer mMediaPlayer,mediaPlayer;
+    private InterstitialAd interstitialAd;
+    String fb_intrestitia_id;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -63,6 +72,66 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
+
+        AudienceNetworkAds.initialize(this);
+        if (BuildConfig.DEBUG){
+            fb_intrestitia_id = getString(R.string.facebook_Interstitial_test);
+        }
+        else {
+            fb_intrestitia_id = getString(R.string.facebook_Interstitial_live);
+        }
+        interstitialAd = new InterstitialAd(this, fb_intrestitia_id);
+
+        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+                // Interstitial ad displayed callback
+                Log.e("TAG", "Interstitial ad displayed.");
+            }
+
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                // Interstitial dismissed callback
+                Log.e("TAG", "Interstitial ad dismissed.");
+                Intent i = new Intent(Whatsapp_audiocall.this, audioactivity.class);
+                startActivity(i);
+                finish();
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Ad error callback
+                Log.e("TAG", "Interstitial ad failed to load: " + adError.getErrorMessage());
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Interstitial ad is loaded and ready to be displayed
+
+                // Show the ad
+
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Ad clicked callback
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Ad impression logged callback
+
+            }
+        };
+
+        // For auto play video ads, it's recommended to load the ad
+        // at least 30 seconds before it is shown
+        interstitialAd.loadAd(
+                interstitialAd.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build());
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String encodedImage = sharedPreferences.getString("image", null);
@@ -177,24 +246,22 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         dec_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Whatsapp_audiocall.this, audioactivity.class);
-                startActivity(i);
+                interstitialAd.show();
                 mMediaPlayer.stop();
                 mediaPlayer.stop();
                 stopTimer();
-                finish();
+
             }
         });
 
         decline_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Whatsapp_audiocall.this, audioactivity.class);
-                startActivity(i);
+                interstitialAd.show();
                 mMediaPlayer.stop();
                 mediaPlayer.stop();
                 stopTimer();
-                finish();
+
             }
         });
 
@@ -284,6 +351,7 @@ public class Whatsapp_audiocall extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        interstitialAd.show();
         mMediaPlayer.stop();
         mediaPlayer.stop();
     }

@@ -159,32 +159,34 @@
                 android:id="@+id/startCall"
                 android:layout_marginTop="10dp"/>
 
-            <com.google.android.ads.nativetemplates.TemplateView
-                android:id="@+id/my_template"
-                app:gnt_template_type="@layout/gnt_medium_template_view"
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:visibility="gone"
-                android:layout_marginBottom="8dp"
-                android:layout_below="@+id/startCall"
-                android:layout_height="wrap_content" />
+                <FrameLayout
+                    android:id="@+id/nativeAdContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginStart="1dp"
+                    android:visibility="gone"
+                    android:background="@drawable/btns_exit"
+                    android:layout_marginBottom="8dp"
+                    android:layout_below="@+id/startCall"
+                    android:padding="16dp"/>
+
         </RelativeLayout>
     </ScrollView>
 
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.applovin.mediation.ads.MaxAdView
+        xmlns:maxads="http://schemas.applovin.com/android/1.0"
+        maxads:adUnitId="d88dd6e014ffdbda"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
-
+        android:id="@+id/adView"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/banner_height" />
 
 
 

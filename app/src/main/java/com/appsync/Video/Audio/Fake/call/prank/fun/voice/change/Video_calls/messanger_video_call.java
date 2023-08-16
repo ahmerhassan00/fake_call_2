@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -24,6 +26,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.Whatsapp_audiocall;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls.audioactivity;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.BuildConfig;
@@ -34,8 +40,10 @@ import com.facebook.ads.AudienceNetworkAds;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 
+import java.util.concurrent.TimeUnit;
 
-public class messanger_video_call extends AppCompatActivity implements SurfaceHolder.Callback {
+
+public class messanger_video_call extends AppCompatActivity implements SurfaceHolder.Callback, MaxAdListener {
 
     SurfaceView surfaceView,surfacetwo;
     Camera camera;
@@ -44,8 +52,10 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
     RelativeLayout relativeLayout, topitems;
     TextView caller_name;
     ImageView callend,callAccept,Chatbtn, cancelTwo, profilePic;
-    private InterstitialAd interstitialAd;
-    String fb_intrestitia_id;
+    String applovin_intrestitial;
+//    ProgressDialog mProgressDialog;
+    private MaxInterstitialAd maxinterstitialAd;
+    private int retryAttempt;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,64 +87,22 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
 
-        AudienceNetworkAds.initialize(this);
-        if (BuildConfig.DEBUG){
-            fb_intrestitia_id = getString(R.string.facebook_Interstitial_test);
-        }
-        else {
-            fb_intrestitia_id = getString(R.string.facebook_Interstitial_live);
-        }
-        interstitialAd = new InterstitialAd(this, fb_intrestitia_id);
+        createInterstitialAd();
 
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                Log.e("TAG", "Interstitial ad displayed.");
-            }
+//        mProgressDialog = new ProgressDialog(this);
+//        mProgressDialog.setTitle("Please Wait");
+//        mProgressDialog.setMessage("Its loading...");
+//        mProgressDialog.setCancelable(false);
+//        mProgressDialog.show();
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mProgressDialog.dismiss();
+//            }
+//        },3000);
 
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                Log.e("TAG", "Interstitial ad dismissed.");
-                Intent i = new Intent(messanger_video_call.this, audioactivity.class);
-                startActivity(i);
-                finish();
-            }
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                Log.e("TAG", "Interstitial ad failed to load: " + adError.getErrorMessage());
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-
-                // Show the ad
-
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-
-            }
-        };
-
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String encodedImage = sharedPreferences.getString("image", null);
@@ -174,13 +142,17 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
                 surfaceView.setVisibility(View.GONE);
                 videoView.setVisibility(View.VISIBLE);
                 surfacetwo.setVisibility(View.VISIBLE);
+//                mProgressDialog.dismiss();
 
             }
         });
         callend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interstitialAd.show();
+                if (maxinterstitialAd.isReady()){
+                    maxinterstitialAd.showAd();
+                    finish();
+                }
                 videoView.stopPlayback();
                 mMediaPlayer.stop();
 
@@ -190,7 +162,10 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
         cancelTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interstitialAd.show();
+                if (maxinterstitialAd.isReady()){
+                    maxinterstitialAd.showAd();
+                    finish();
+                }
                 videoView.stopPlayback();
                 mMediaPlayer.stop();
 
@@ -204,7 +179,10 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
         super.onBackPressed();
         videoView.stopPlayback();
         mMediaPlayer.stop();
-        interstitialAd.show();
+        if (maxinterstitialAd.isReady()){
+            maxinterstitialAd.showAd();
+            finish();
+        }
     }
 
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -233,5 +211,66 @@ public class messanger_video_call extends AppCompatActivity implements SurfaceHo
         this.camera.stopPreview();
         this.camera.release();
         this.camera = null;
+    }
+    void createInterstitialAd() {
+
+        if (BuildConfig.DEBUG){
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+
+        }
+        else {
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+        }
+        maxinterstitialAd = new MaxInterstitialAd( applovin_intrestitial, this );
+        maxinterstitialAd.setListener( this );
+
+        // Load the first ad
+        maxinterstitialAd.loadAd();
+    }
+
+    // MAX Ad Listener
+    @Override
+    public void onAdLoaded(final MaxAd maxAd) {
+        // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
+
+        // Reset retry attempt
+        retryAttempt = 0;
+    }
+
+    @Override
+    public void onAdLoadFailed(final String adUnitId, final MaxError error) {
+        // Interstitial ad failed to load
+        // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+
+        retryAttempt++;
+        long delayMillis = TimeUnit.SECONDS.toMillis( (long) Math.pow( 2, Math.min( 6, retryAttempt ) ) );
+
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                maxinterstitialAd.loadAd();
+            }
+        }, delayMillis );
+    }
+
+    @Override
+    public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error) {
+        // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
+        maxinterstitialAd.loadAd();
+    }
+
+    @Override
+    public void onAdDisplayed(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdClicked(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdHidden(final MaxAd maxAd)
+    {
+        // Interstitial ad is hidden. Pre-load the next ad
+        maxinterstitialAd.loadAd();
     }
 }

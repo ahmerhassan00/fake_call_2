@@ -14,6 +14,8 @@ import com.applovin.mediation.MaxAdListener;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxAppOpenAd;
 import com.applovin.sdk.AppLovinSdk;
+import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.BuildConfig;
+import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.R;
 
 public class ExampleAppOpenManager
         implements LifecycleObserver, MaxAdListener {
@@ -21,11 +23,18 @@ public class ExampleAppOpenManager
     Context context;
 
     //Ads ID here
-    String ADS_UNIT = "e260d02e71956c00";
+    String ADS_UNIT ;
+
 
     public ExampleAppOpenManager(final Context context) {
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
 
+        if (BuildConfig.DEBUG){
+            ADS_UNIT = context.getString(R.string.applovin_openApp);
+        }
+        else {
+            ADS_UNIT = context.getString(R.string.applovin_openApp);
+        }
         this.context = context;
 
         appOpenAd = new MaxAppOpenAd(ADS_UNIT, context);
@@ -69,10 +78,12 @@ public class ExampleAppOpenManager
     @Override
     public void onAdHidden(final MaxAd ad) {
         appOpenAd.loadAd();
+        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onAdDisplayFailed(final MaxAd ad, final MaxError error) {
         appOpenAd.loadAd();
+        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show();
     }
 }

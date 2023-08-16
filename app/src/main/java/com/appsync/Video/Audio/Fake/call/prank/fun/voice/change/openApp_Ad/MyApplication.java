@@ -8,8 +8,6 @@ import com.applovin.sdk.AppLovinSdkConfiguration;
 public class MyApplication extends Application
 {
     private static ExampleAppOpenManager appOpenManager;
-
-
     @Override
     public void onCreate()
     {
@@ -20,9 +18,9 @@ public class MyApplication extends Application
             @Override
             public void onSdkInitialized(final AppLovinSdkConfiguration configuration)
             {
+                appOpenManager = new ExampleAppOpenManager( MyApplication.this );
 
             }
         } );
-        appOpenManager = new ExampleAppOpenManager( this );
     }
 }

@@ -3,6 +3,7 @@ package com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.Audio_calls;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -18,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.BuildConfig;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.R;
 import com.appsync.Video.Audio.Fake.call.prank.fun.voice.change.live_chat.chat_activity;
@@ -28,8 +33,9 @@ import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
-public class Whatsapp_audiocall extends AppCompatActivity {
+public class Whatsapp_audiocall extends AppCompatActivity implements MaxAdListener {
 
     ImageView answer_call,chats, decline_call, dec_two, micON,micOff,speakerOn,speakerOff, profilePic;
     private RelativeLayout swipeContainer;
@@ -43,8 +49,11 @@ public class Whatsapp_audiocall extends AppCompatActivity {
     private int timerCount = 0;
     private boolean isTimerRunning = false;
     MediaPlayer mMediaPlayer,mediaPlayer;
-    private InterstitialAd interstitialAd;
-    String fb_intrestitia_id;
+//    ProgressDialog mProgressDialog;
+    String applovin_intrestitial;
+    private MaxInterstitialAd maxinterstitialAd;
+    private int retryAttempt;
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -73,64 +82,21 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
 
-        AudienceNetworkAds.initialize(this);
-        if (BuildConfig.DEBUG){
-            fb_intrestitia_id = getString(R.string.facebook_Interstitial_test);
-        }
-        else {
-            fb_intrestitia_id = getString(R.string.facebook_Interstitial_live);
-        }
-        interstitialAd = new InterstitialAd(this, fb_intrestitia_id);
+        createInterstitialAd();
 
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-                Log.e("TAG", "Interstitial ad displayed.");
-            }
-
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-                Log.e("TAG", "Interstitial ad dismissed.");
-                Intent i = new Intent(Whatsapp_audiocall.this, audioactivity.class);
-                startActivity(i);
-                finish();
-            }
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-                Log.e("TAG", "Interstitial ad failed to load: " + adError.getErrorMessage());
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-
-                // Show the ad
-
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-
-            }
-        };
-
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+//        mProgressDialog = new ProgressDialog(this);
+//        mProgressDialog.setTitle("Please Wait");
+//        mProgressDialog.setMessage("Its loading...");
+//        mProgressDialog.setCancelable(false);
+//        mProgressDialog.show();
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mProgressDialog.dismiss();
+//            }
+//        },3000);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -246,7 +212,10 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         dec_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interstitialAd.show();
+                if (maxinterstitialAd.isReady()){
+                    maxinterstitialAd.showAd();
+                    finish();
+                }
                 mMediaPlayer.stop();
                 mediaPlayer.stop();
                 stopTimer();
@@ -257,7 +226,10 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         decline_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interstitialAd.show();
+                if (maxinterstitialAd.isReady()){
+                    maxinterstitialAd.showAd();
+                    finish();
+                }
                 mMediaPlayer.stop();
                 mediaPlayer.stop();
                 stopTimer();
@@ -346,12 +318,76 @@ public class Whatsapp_audiocall extends AppCompatActivity {
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         counterTextView.setText(timeFormatted);
     }
+    void createInterstitialAd() {
+
+        if (BuildConfig.DEBUG){
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+
+        }
+        else {
+            applovin_intrestitial = getString(R.string.app_lovin_interstitial);
+        }
+        maxinterstitialAd = new MaxInterstitialAd( applovin_intrestitial, this );
+        maxinterstitialAd.setListener( this );
+
+        // Load the first ad
+        maxinterstitialAd.loadAd();
+    }
+
+    // MAX Ad Listener
+    @Override
+    public void onAdLoaded(final MaxAd maxAd) {
+        // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
+
+        // Reset retry attempt
+        retryAttempt = 0;
+    }
+
+    @Override
+    public void onAdLoadFailed(final String adUnitId, final MaxError error) {
+        // Interstitial ad failed to load
+        // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+
+        retryAttempt++;
+        long delayMillis = TimeUnit.SECONDS.toMillis( (long) Math.pow( 2, Math.min( 6, retryAttempt ) ) );
+
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                maxinterstitialAd.loadAd();
+            }
+        }, delayMillis );
+    }
+
+    @Override
+    public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error) {
+        // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
+        maxinterstitialAd.loadAd();
+    }
+
+    @Override
+    public void onAdDisplayed(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdClicked(final MaxAd maxAd) {}
+
+    @Override
+    public void onAdHidden(final MaxAd maxAd)
+    {
+        // Interstitial ad is hidden. Pre-load the next ad
+        maxinterstitialAd.loadAd();
+    }
 
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        interstitialAd.show();
+        if (maxinterstitialAd.isReady()){
+            maxinterstitialAd.showAd();
+            finish();
+        }
         mMediaPlayer.stop();
         mediaPlayer.stop();
     }

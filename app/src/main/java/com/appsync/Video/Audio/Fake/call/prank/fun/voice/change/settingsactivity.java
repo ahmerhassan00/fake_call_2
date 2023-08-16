@@ -3,6 +3,7 @@ package com.appsync.Video.Audio.Fake.call.prank.fun.voice.change;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,9 +45,9 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
     private LinearLayout adView;
     private NativeAd nativeAd;
     String placementId, nativeID, applovin_intrestitial;
-    private InterstitialAd interstitialAd;
     private MaxInterstitialAd maxinterstitialAd;
     private int retryAttempt;
+    ProgressDialog mProgressDialog;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -60,6 +61,21 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
         privacy = findViewById(R.id.privacypolicy);
 
         createInterstitialAd();
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setTitle("Please Wait");
+        mProgressDialog.setMessage("Its loading...");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.dismiss();
+            }
+        },3000);
+
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,14 +118,13 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
                 if (maxinterstitialAd.isReady()){
                     maxinterstitialAd.showAd();
                 }
-                else {
-                    Toast.makeText(settingsactivity.this, "1", Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
 
 
 
+        //facebook banner
         if (BuildConfig.DEBUG){
             placementId = getString(R.string.facebook_banner_test);
             applovin_intrestitial = getString(R.string.app_lovin_interstitial);
@@ -119,7 +134,6 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
             placementId = getString(R.string.facebook_banner_live);
             applovin_intrestitial = getString(R.string.app_lovin_interstitial);
         }
-        //facebook banner
         fbadView = new AdView(this, placementId, AdSize.BANNER_HEIGHT_50);
 
         //Ad Container
@@ -231,6 +245,7 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
 //                        .build());
     }
 
+    //facebook native
     private void loadNativeAd () {
 
 
@@ -253,7 +268,6 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
                 Log.d("fb_native","Error: "+adError.getErrorMessage());
 
             }
-
             @Override
             public void onAdLoaded(Ad ad) {
                 // Race condition, load() called again before last ad was displayed
@@ -263,12 +277,10 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
                 // Inflate Native Ad into Container
                 inflateAd(nativeAd);
             }
-
             @Override
             public void onAdClicked(Ad ad) {
 
             }
-
             @Override
             public void onLoggingImpression(Ad ad) {
 
@@ -328,8 +340,8 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
 
     }
 
-    void createInterstitialAd()
-    {
+    //applovin_Intrestitial
+    void createInterstitialAd() {
 
         if (BuildConfig.DEBUG){
             applovin_intrestitial = getString(R.string.app_lovin_interstitial);
@@ -343,13 +355,11 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
 
         // Load the first ad
         maxinterstitialAd.loadAd();
-        Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show();
     }
 
     // MAX Ad Listener
     @Override
-    public void onAdLoaded(final MaxAd maxAd)
-    {
+    public void onAdLoaded(final MaxAd maxAd) {
         // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
 
         // Reset retry attempt
@@ -357,8 +367,7 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
     }
 
     @Override
-    public void onAdLoadFailed(final String adUnitId, final MaxError error)
-    {
+    public void onAdLoadFailed(final String adUnitId, final MaxError error) {
         // Interstitial ad failed to load
         // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
 
@@ -376,8 +385,7 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
     }
 
     @Override
-    public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error)
-    {
+    public void onAdDisplayFailed(final MaxAd maxAd, final MaxError error) {
         // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
         maxinterstitialAd.loadAd();
     }
@@ -396,6 +404,35 @@ public class settingsactivity extends AppCompatActivity implements MaxAdListener
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (maxinterstitialAd.isReady()){
+            maxinterstitialAd.showAd();
+        }
 
+    }
 
+    protected void onRestart() {
+        super.onRestart();
+
+        maxinterstitialAd.loadAd();
+        createInterstitialAd();
+
+        mProgressDialog.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.dismiss();
+            }
+        },2000);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mProgressDialog.dismiss();
+    }
 }
